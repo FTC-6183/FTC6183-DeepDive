@@ -4,7 +4,9 @@ import java.text.SimpleDateFormat
 // build.gradle in FtcRobotController
 //
 apply plugin: 'com.android.library'
-
+repositories {
+    mavenCentral()
+}
 android {
 
     defaultConfig {
