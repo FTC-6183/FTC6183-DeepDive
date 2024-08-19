@@ -17,9 +17,16 @@ public class MecanumTeleOp extends LinearOpMode {
         DcMotorEx frontRightMotor = (DcMotorEx) hardwareMap.dcMotor.get("fr");
         DcMotorEx backRightMotor = (DcMotorEx) hardwareMap.dcMotor.get("br");
 
-        frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+       // frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+       // backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+       backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         waitForStart();
 
         if (isStopRequested()) return;
@@ -35,9 +42,17 @@ public class MecanumTeleOp extends LinearOpMode {
             double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
             double frontLeftPower = (y + x + rx) / denominator;
             double backLeftPower = (y - x + rx) / denominator;
-            double frontRightPower = (y - x - rx) / denominator;
-            double backRightPower = (y + x - rx) / denominator;
+            double frontRightPower = (y + x - rx) / denominator;
+            double backRightPower = (y - x - rx) / denominator;
 
+            telemetry.addData("Left stick X", x);
+            telemetry.addData("Front Left Power", frontLeftPower);
+            telemetry.addData("Back Left Power", backLeftPower);
+
+            telemetry.addData("Front Right Power", frontRightPower);
+            telemetry.addData("Back Right Power", backRightPower);
+
+            telemetry.update();
             frontLeftMotor.setPower(frontLeftPower);
             backLeftMotor.setPower(backLeftPower);
             frontRightMotor.setPower(frontRightPower);
