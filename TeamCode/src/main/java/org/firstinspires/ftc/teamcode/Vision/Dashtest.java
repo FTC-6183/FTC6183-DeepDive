@@ -1,11 +1,11 @@
 package org.firstinspires.ftc.teamcode.Vision;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.Vision.Pipelines.DashboardStream;
+import org.firstinspires.ftc.teamcode.Vision.Pipelines.LocationID;
 import org.firstinspires.ftc.vision.VisionPortal;
 
 @TeleOp
@@ -14,7 +14,7 @@ public class Dashtest extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
 
-        Dashcam.CameraStreamProcessor processor = new Dashcam.CameraStreamProcessor();
+        DashboardStream processor = new DashboardStream();
 
         LocationID process = new LocationID();
         waitForStart();
