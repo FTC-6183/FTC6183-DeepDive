@@ -19,6 +19,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.MecanumDrive;
 import java.util.List;
 
 @Photon
+@TeleOp
 public class CMU extends LinearOpMode {
     private MecanumDrive drive;
 
@@ -40,7 +41,7 @@ public class CMU extends LinearOpMode {
 
         time = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
 
-        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
+       // telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
 
         drive.setDefaultCommand(new ManualDriveCommand(
@@ -78,9 +79,9 @@ public class CMU extends LinearOpMode {
             CommandScheduler.getInstance().run();
 
 
-            telemetry.addData("Loop (hz)", loop);
+            //telemetry.addData("Loop (hz)", loop);
 
-            telemetry.update();
+          //0  telemetry.update();
 
         }
     }
